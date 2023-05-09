@@ -34,6 +34,10 @@ let nuevoMail;
 let nuevoPassword;
 let nuevoLenguajes = [];
 
+// Creamos la variable que va a contar la cantidad de intentos de inicio de sesión.
+
+let iniciosFallidos = 0;
+
 // Le preguntamos al usuario si quiere iniciar sesión o crear un nuevo usuario. Dependiendo de lo que elija el usuario, iniciamos sesión, creamos nuevo usuario o solicitamos que ingrese nuevamente la opción.
 
 let elegirAccion = ()=> {
@@ -67,8 +71,13 @@ let verificar = ()=> {
     });
 
     if (ingreso == false) {
-        alert(`Alguno de los datos que ingresaste no es válido. Por favor, intenta nuevamente.`);
+        if (iniciosFallidos < 3) {
+            alert(`Alguno de los datos que ingresaste no es válido. Por favor, intenta nuevamente.`);
+        iniciosFallidos += 1;
         verificar();
+        } else {
+            alert(`Me estás queriendo hackear. Le pasé tu dirección al FBI y te van a ir a buscar por atrevid@`);
+        }
     };
 };
 
