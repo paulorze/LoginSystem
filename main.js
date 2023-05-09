@@ -71,7 +71,7 @@ let verificar = ()=> {
     });
 
     if (ingreso == false) {
-        if (iniciosFallidos < 3) {
+        if (iniciosFallidos < 2) {
             alert(`Alguno de los datos que ingresaste no es válido. Por favor, intenta nuevamente.`);
         iniciosFallidos += 1;
         verificar();
